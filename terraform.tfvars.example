@@ -1,0 +1,6 @@
+f5xc_tenant       = "playground-wtppvaog"
+
+project_prefix    = "marcel"
+namespace         = "ns"
+virtual_site      = "vsite"
+vk8s_name         = "vk8s"
