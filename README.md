@@ -27,6 +27,32 @@ terraform plan
 terraform apply
 ```
 
+## Example
+
+```
+Outputs:
+
+f5xc_namespace = {
+  "namespace" = {
+    "id" = "0d28e702-b401-4f23-8851-f1ca2087ba09"
+      "name" = "marcel-ns"
+  }
+}
+f5xc_virtual_site = {
+  "virtual-site" = {
+    "id" = "a6bc66b0-70fd-49a2-8551-91a222ea59eb"
+      "name" = "marcel-vsite"
+      "site_type" = "CUSTOMER_EDGE"
+  }
+}
+vk8s = {
+  "vk8s" = {
+    "id" = "4374512f-4c15-4f8b-8fd4-f16240816634"
+      "name" = "marcel-vk8s"
+  }
+}
+```
+
 ## Varia
 
 ### Start with empty folder
