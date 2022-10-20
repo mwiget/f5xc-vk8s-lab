@@ -40,8 +40,8 @@ resource "volterra_api_credential" "cluster" {
 
 resource "local_file" "kubeconfig" {            
   depends_on = [ volterra_api_credential.cluster ]
-  content  = base64decode(volterra_api_credential.cluster.data)
-  filename = "./kubeconfig"
+  content    = base64decode(volterra_api_credential.cluster.data)
+  filename   = "./kubeconfig"
 }
 
 
