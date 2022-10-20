@@ -2,6 +2,14 @@ variable "f5xc_tenant" {
   type = string
 }
 
+variable "f5xc_api_url" {
+  type = string
+}
+
+variable "f5xc_api_token" {
+  type = string
+}
+
 variable "project_prefix" {
   type        = string
   description = "prefix string put in front of string"

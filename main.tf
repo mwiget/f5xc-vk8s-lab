@@ -21,6 +21,8 @@ module "vk8s" {
 module "vk8s_wait_for_online" {
   depends_on = [module.vk8s]
   source         = "./modules/f5xc/status/vk8s"
+  f5xc_api_url   = var.f5xc_api_url
+  f5xc_api_token = var.f5xc_api_token
   f5xc_namespace = "${var.project_prefix}-${var.namespace}"
   f5xc_vk8s_name = "${var.project_prefix}-${var.vk8s_name}"
   f5xc_tenant    = var.f5xc_tenant
