@@ -8,8 +8,11 @@ Provide F5 XC API credentials via environment variables:
 
 ```
 export VOLT_API_P12_FILE=/cert/<tenant>.console.ves.volterra.io.api-creds.p12
-export VOLTERRA_TOKEN=<token>
 export VOLT_API_URL=https://playground.console.volterra.io/api
+
+export TF_VAR_f5xc_api_url=https://playground.console.volterra.io/api
+export TF_VAR_f5xc_api_token=<token>
+
 #export VOLT_API_CA_CERT=<only required for non production use>
 ```
 
@@ -27,10 +30,10 @@ terraform plan
 terraform apply
 ```
 
-## Example
+## Example output
 
 ```
-Outputs:
+$ terraform output
 
 f5xc_namespace = {
   "namespace" = {
