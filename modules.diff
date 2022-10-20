@@ -1,0 +1,81 @@
+diff --git a/f5xc/status/vk8s/variables.tf b/f5xc/status/vk8s/variables.tf
+index 9960aaf..c12c8cf 100644
+--- a/f5xc/status/vk8s/variables.tf
++++ b/f5xc/status/vk8s/variables.tf
+@@ -26,4 +26,4 @@ variable "f5xc_vk8s_get_uri_filter" {
+ 
+ variable "f5xc_vk8s_name" {
+   type = string
+-}
+\ No newline at end of file
++}
+diff --git a/f5xc/v8ks/main.tf b/f5xc/v8ks/main.tf
+index c0b2885..98efdd4 100644
+--- a/f5xc/v8ks/main.tf
++++ b/f5xc/v8ks/main.tf
+@@ -6,10 +6,10 @@ resource "volterra_virtual_k8s" "vk8s" {
+   labels      = local.f5xc_labels
+ 
+   dynamic "vsite_refs" {
+-    for_each = length(var.f5xc_virtual_site_refs) > 0 ? var.f5xc_virtual_site_refs : []
++    for_each = var.f5xc_virtual_site_refs
+     content {
+-      name      = var.f5xc_virtual_site_refs
+-      namespace = var.f5xc_namespace
++      name      = vsite_refs.value
++      namespace = "shared"
+       tenant    = var.f5xc_tenant
+     }
+   }
+@@ -22,4 +22,4 @@ resource "volterra_virtual_k8s" "vk8s" {
+       namespace = var.f5xc_namespace
+     }
+   }*/
+-}
+\ No newline at end of file
++}
+diff --git a/f5xc/v8ks/providers.tf b/f5xc/v8ks/providers.tf
+deleted file mode 100644
+index 94ddbe2..0000000
+--- a/f5xc/v8ks/providers.tf
++++ /dev/null
+@@ -1,7 +0,0 @@
+-provider "volterra" {
+-  api_p12_file = var.f5xc_api_p12_file
+-  api_cert     = var.f5xc_api_p12_file != "" ? "" : var.f5xc_api_cert
+-  api_key      = var.f5xc_api_p12_file != "" ? "" : var.f5xc_api_key
+-  api_ca_cert  = var.f5xc_api_ca_cert
+-  url          = var.f5xc_api_url
+-}
+\ No newline at end of file
+diff --git a/f5xc/v8ks/variables.tf b/f5xc/v8ks/variables.tf
+index a8c379b..0877563 100644
+--- a/f5xc/v8ks/variables.tf
++++ b/f5xc/v8ks/variables.tf
+@@ -1,5 +1,6 @@
+ variable "f5xc_api_url" {
+   type = string
++  default = ""
+ }
+ 
+ variable "f5xc_api_cert" {
+@@ -19,10 +20,12 @@ variable "f5xc_api_ca_cert" {
+ 
+ variable "f5xc_api_p12_file" {
+   type = string
++  default = ""
+ }
+ 
+ variable "f5xc_api_token" {
+   type = string
++  default = ""
+ }
+ 
+ variable "f5xc_tenant" {
+@@ -60,4 +63,4 @@ variable "f5xc_virtual_site_refs" {
+ variable "f5xc_labels" {
+   type    = map(string)
+   default = {}
+-}
+\ No newline at end of file
++}
