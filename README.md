@@ -13,8 +13,23 @@ export VOLT_API_URL=https://playground.console.volterra.io/api
 #export VOLT_API_CA_CERT=<only required for non production use>
 ```
 
+Create terraform.tfvars and adjust
 
-## Start with empty folder
+```
+cp terraform.tfvars.example terraform.tfvars
+```
+
+## Deploy
+
+```
+terraform init
+terraform plan
+terraform apply
+```
+
+## Varia
+
+### Start with empty folder
 
 ```
 git init
