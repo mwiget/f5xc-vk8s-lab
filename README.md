@@ -30,6 +30,9 @@ terraform plan
 terraform apply
 ```
 
+Create or set the label virtualSite to the virtual-site name that got created. In below's example that is
+"marcel-vsite".
+
 ## Example output
 
 ```
@@ -54,6 +57,13 @@ vk8s = {
       "name" = "marcel-vk8s"
   }
 }
+```
+
+This will create a kubeconfig file that can be used to deploy services:
+
+```
+export KUBECONFIG=./kubeconfig
+kubectl apply -f alpine.yaml
 ```
 
 ## Varia
